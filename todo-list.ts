@@ -1,5 +1,4 @@
 "use strict";
-console.log("typescript")
 
 interface Gorev {
     id: number;
@@ -77,13 +76,6 @@ document.body.addEventListener("keydown", function (event: KeyboardEvent) {
 
 document.querySelector("#btnAddNewTask")?.addEventListener("click", newTask);
 
-
-
-
-
-
-
-
 for (let span of filters) {
     span.addEventListener("click", function () {
         document.querySelector("span.active")?.classList.remove("active");
@@ -99,7 +91,7 @@ function newTask(event: Event) {
 
         if (!isEditTask) {
             // ekleme
-            gorevListesi.push({ "id": gorevListesi.length + 1, "gorevAdi": taskInput!.value, "durum": "pending"});
+            gorevListesi.push({ "id": gorevListesi.length + 1, "gorevAdi": taskInput!.value, "durum": "pending" });
         } else {
             // güncelleme
             for (let gorev of gorevListesi) {
@@ -110,14 +102,14 @@ function newTask(event: Event) {
             }
         }
 
-        taskInput!.value ="";
+        taskInput!.value = "";
         displayTask(document.querySelector("span.active")?.id || "");
         localStorage.setItem("gorevListesi", JSON.stringify(gorevListesi));
     }
     event.preventDefault();
 }
 
-function deleteTask(id: number) : void {
+function deleteTask(id: number): void {
     let deleteId: string | undefined;
 
     for (let index in gorevListesi) {
@@ -126,7 +118,7 @@ function deleteTask(id: number) : void {
         }
     }
 
-    gorevListesi.splice(Number(deleteId),1);
+    gorevListesi.splice(Number(deleteId), 1);
     displayTask(document.querySelector("span.active")?.id || "");
     localStorage.setItem("gorevListesi", JSON.stringify(gorevListesi));
 }
